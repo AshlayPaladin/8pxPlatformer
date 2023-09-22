@@ -1,0 +1,5 @@
+# Godot 4+ specific ignores
+.godot/
+
+# content folder is stored separately; do not store binary files in Git
+content/
