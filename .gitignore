@@ -3,3 +3,4 @@
 
 # content folder is stored separately; do not store binary files in Git
 content/
+export_presets.cfg
