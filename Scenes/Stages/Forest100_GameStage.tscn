@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://b85a61j58ynua" path="res://Scenes/Stages/GameStage.tscn" id="1_hn4lv"]
 [ext_resource type="Script" path="res://Scripts/Forest100_GameStage.cs" id="2_3nlcw"]
 [ext_resource type="Texture2D" uid="uid://c1tcqwpgvrbup" path="res://content/Textures/backgrounds/Background.png" id="3_c8uhh"]
-[ext_resource type="PackedScene" path="res://Scenes/Entities/RoomTransition.tscn" id="3_df223"]
+[ext_resource type="PackedScene" uid="uid://bvh3l6wbmlgbf" path="res://Scenes/Entities/RoomTransition.tscn" id="3_df223"]
 [ext_resource type="Texture2D" uid="uid://dab41e7xnsjlq" path="res://content/Textures/8pxTileset_Placeholder.png" id="3_nygfd"]
-[ext_resource type="PackedScene" path="res://Scenes/Entities/SpawnMarker.tscn" id="6_dx8nf"]
+[ext_resource type="PackedScene" uid="uid://eklm4o0rvg05" path="res://Scenes/Entities/SpawnMarker.tscn" id="6_dx8nf"]
 [ext_resource type="PackedScene" uid="uid://d1dw68yu0aftc" path="res://Scenes/Entities/pickup_collectable.tscn" id="7_ylfav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ilu08"]
