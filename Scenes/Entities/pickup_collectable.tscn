@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://d1dw68yu0aftc"]
+
+[ext_resource type="Script" path="res://Scripts/pickup_collectable.cs" id="1_0r06k"]
+[ext_resource type="Texture2D" uid="uid://bjn8h4wccq04h" path="res://content/Textures/sprites/8px_Pickups.png" id="1_yfs6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekqun"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cavb"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3caev"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlfol"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(8, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tcsg"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfyes"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4faa5"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ndce"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr6oc"]
+atlas = ExtResource("1_yfs6v")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03a1d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekqun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cavb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3caev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlfol")
+}],
+"loop": true,
+"name": &"blueflower_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tcsg")
+}],
+"loop": true,
+"name": &"pinkpetal_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfyes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4faa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ndce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr6oc")
+}],
+"loop": true,
+"name": &"whiteflower_idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66mfw"]
+radius = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v2syj"]
+emission_shape = 1
+emission_sphere_radius = 6.0
+particle_flag_disable_z = true
+spread = 22.92
+gravity = Vector3(0, -16, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[node name="PickupCollectable" type="Node2D"]
+script = ExtResource("1_0r06k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_03a1d")
+animation = &"whiteflower_idle"
+frame_progress = 0.520413
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_66mfw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_v2syj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
