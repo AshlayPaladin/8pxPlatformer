@@ -9,7 +9,7 @@
   - [x] Walking Left/Right
   - [x] Jumping with Gravity
   - [x] Physics Collisions
-- [x] Room Transitions
+- [ ] Room Transitions
   - [x] Standardize and Generalize Scene Loading
   - [ ] Carry Player Information between Scenes
 - [ ] Player Character Abilities
