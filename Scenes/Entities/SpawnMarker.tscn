@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://eklm4o0rvg05"]
+
+[ext_resource type="Script" path="res://Scripts/SpawnMarker.cs" id="1_6hh3j"]
+
+[node name="SpawnMarker" type="Node2D"]
+script = ExtResource("1_6hh3j")
+
+[node name="Marker2D" type="Marker2D" parent="."]

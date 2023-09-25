@@ -1,0 +1,67 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+
+public partial class GameManager : Node
+{
+	private int _maxPlayers = 4;
+	
+	public PackedScene PlayerScene;
+	public Node CurrentStageNode;
+	public int FlowersCollected = 0;
+	public List<Player> Players = new List<Player>();
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		PlayerScene = (PackedScene)ResourceLoader.Load("res://Scenes/Entities/Player.tscn");
+		
+		Viewport root = GetTree().Root;
+		CurrentStageNode = root.GetChild(root.GetChildCount() - 1);
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		
+	}
+	
+	public void AddPlayer(Player player)
+	{
+		if(Players.Count <= _maxPlayers)
+		{
+			Players.Add(player);
+		}
+		else
+		{
+			// Players is Full, no new player can join
+			
+		}
+	}
+	
+	public void PickupFlowers(int count)
+	{
+		FlowersCollected += count;
+	}
+	
+	public void GotoScene(string path, string markerId)
+	{
+		CallDeferred(nameof(DeferredGotoScene), path, markerId);
+	}
+	
+	public void DeferredGotoScene(string path, string markerId)
+	{
+		CurrentStageNode.Free();
+		PackedScene newScene = (PackedScene)ResourceLoader.Load(path);
+		Node newStageNode = newScene.Instantiate();
+		
+		CurrentStageNode = newStageNode;
+		Viewport root = GetTree().Root;
+		
+		root.AddChild(CurrentStageNode);
+		//GetTree().SetCurrentScene(CurrentStageNode);
+		
+		GameStage newStage = (GameStage)newStageNode;
+		newStage.SpawnPlayerAtMarker(markerId);
+	}
+}
