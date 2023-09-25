@@ -9,6 +9,10 @@
   - [x] Walking Left/Right
   - [x] Jumping with Gravity
   - [x] Physics Collisions
+- [ ] Placeholder UI
+  - [ ] Display Number of Flowers Collected (Total)
+  - [ ] Display Number of Flowers Collected (By Player)
+  - [ ] Display Current Area Name
 - [ ] Room Transitions
   - [x] Standardize and Generalize Scene Loading
   - [ ] Carry Player Information between Scenes
@@ -22,6 +26,7 @@
     - [ ] Invincibility Frames for Affected Player
 - [ ] Online Multiplayer
   - [ ] Avatars for Each Live Player
+    - [ ] Display Player Name Over Avatar
   - [ ] Join and Leave Lobby
   - [ ] Traverse Accessible Areas Independently
 - [ ] Stage Content for Live Testing
