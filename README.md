@@ -25,6 +25,10 @@
   - [ ] Join and Leave Lobby
   - [ ] Traverse Accessible Areas Independently
 - [ ] Stage Content for Live Testing
+  - [ ] Main Menu with Test Functions
+    - [ ] Host Network Lobby
+    - [ ] Join Network Lobby
+    - [ ] Start Single Player Game
   - [ ] 1-2 Areas Focused on Jumping
   - [ ] 1-2 Areas Focused on Attacking
   - [ ] 1-2 Areas Focused on Sync Testing
