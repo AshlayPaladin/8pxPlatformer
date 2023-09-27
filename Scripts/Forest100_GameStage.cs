@@ -10,7 +10,7 @@ public partial class Forest100_GameStage : GameStage
 		AddSpawnPoint(GetNode<SpawnMarker>("CaveDoorSpawn"));
 		
 		gameManager = GetNode<GameManager>("/root/GameManager");
-		bgmPlayer = GetNode<AudioStreamPlayer>("BGMPlayer");
+		bgmPlayer = GetNode<BgmAudioStreamPlayer>("/root/BgmAudioStreamPlayer");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

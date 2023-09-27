@@ -6,12 +6,12 @@ public partial class RoomTransition : Node2D
 	[Export] private string pathToDestinationScene;
 	[Export] private string destinationMarkerId;
 	private Node stageNode;
-	private GameManager gameManager;
+	private SceneManager sceneManager;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		gameManager = GetNode<GameManager>("/root/GameManager");
+		sceneManager = GetNode<SceneManager>("/root/SceneManager");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,6 +22,6 @@ public partial class RoomTransition : Node2D
 	public void _on_area_2d_area_entered(Area2D area)
 	{
 		// TRANSITION TO NEW ROOM
-		gameManager.GotoScene(pathToDestinationScene, destinationMarkerId);
+		sceneManager.GotoScene(pathToDestinationScene, destinationMarkerId);
 	}
 }

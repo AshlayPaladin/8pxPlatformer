@@ -1,15 +1,11 @@
 using Godot;
 using System;
 
-public partial class Cave100_GameStage : GameStage
+public partial class PlayerManager : Node
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		AddSpawnPoint(GetNode<SpawnMarker>("ForestExitSpawn"));
-		
-		gameManager = GetNode<GameManager>("/root/GameManager");
-		bgmPlayer = GetNode<BgmAudioStreamPlayer>("/root/BgmAudioStreamPlayer");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

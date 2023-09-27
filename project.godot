@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="8px_Platformer"
-run/main_scene="res://Scenes/Stages/DebugStart.tscn"
+run/main_scene="res://Scenes/Controllers/SceneManager.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.cs"
+GameManager="*res://Scripts/Autoload/GameManager.cs"
+BgmAudioStreamPlayer="*res://Scenes/Controllers/BgmAudioStreamPlayer.tscn"
+NetworkManager="*res://Scripts/Autoload/NetworkManager.cs"
+PlayerManager="*res://Scripts/Autoload/PlayerManager.cs"
 
 [display]
 

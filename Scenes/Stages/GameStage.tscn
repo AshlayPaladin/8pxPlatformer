@@ -52,5 +52,3 @@ shape = SubResource("RectangleShape2D_ix4nn")
 [node name="CollisionShape2D4_Right" type="CollisionShape2D" parent="StageBorder_StaticBody2D"]
 position = Vector2(424, 56)
 shape = SubResource("RectangleShape2D_fco8g")
-
-[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]

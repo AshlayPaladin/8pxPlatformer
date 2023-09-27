@@ -29,7 +29,7 @@ public partial class Player : CharacterBody2D
 	public override void _Ready() 
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("Player_AnimatedSprite2D");
-		_animatedSprite.Play("browntop_walk");
+		_animatedSprite.Play("redtop_walk");
 		
 		_remoteTransform2d = GetNode<RemoteTransform2D>("Player_RemoteTransform2D");
 		
@@ -82,11 +82,11 @@ public partial class Player : CharacterBody2D
 		{
 			if(velocity.X > 0) {
 				_animatedSprite.FlipH = false;
-				_animatedSprite.Play("browntop_walk");
+				_animatedSprite.Play("redtop_walk");
 			}
 			else if(velocity.X < 0){
 				_animatedSprite.FlipH = true;
-				_animatedSprite.Play("browntop_walk");
+				_animatedSprite.Play("redtop_walk");
 			}
 			
 			velocity.X = direction.X * MoveSpeed;
@@ -94,7 +94,7 @@ public partial class Player : CharacterBody2D
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, MoveSpeed);
-			_animatedSprite.Play("browntop_idle");
+			_animatedSprite.Play("redtop_idle");
 		}
 
 		Velocity = velocity;

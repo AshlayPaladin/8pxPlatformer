@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6c4tu2jn7wus"]
+
+[ext_resource type="Script" path="res://Scripts/Autoload/BgmAudioStreamPlayer.cs" id="1_f7l3h"]
+
+[node name="BgmAudioStreamPlayer" type="Node"]
+script = ExtResource("1_f7l3h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

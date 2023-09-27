@@ -11,7 +11,7 @@ public partial class GameStage : Node2D
 	// Private Members : Nodes
 	protected NodePath cameraPath = "../../Camera2D";
 	protected GameManager gameManager;
-	public AudioStreamPlayer bgmPlayer;
+	protected BgmAudioStreamPlayer bgmPlayer;
 
 	// Private Members : Collections
 	protected List<SpawnMarker> spawnPoints = new List<SpawnMarker>();
@@ -26,7 +26,7 @@ public partial class GameStage : Node2D
 	public void SpawnPlayerAtMarker(string spawnMarkerId)
 	{
 		SpawnPlayerAtPoint(spawnMarkerId);
-		PlayBGM();
+		bgmPlayer.Play(pathToBGMFile);
 	}
 
 	public void AddSpawnPoint(SpawnMarker spawnMarker) 
@@ -55,12 +55,5 @@ public partial class GameStage : Node2D
 		}
 
 		return null;
-	}
-	
-	public void PlayBGM()
-	{
-		AudioStream bgm = (AudioStream)ResourceLoader.Load(pathToBGMFile);
-		bgmPlayer.Stream = bgm;
-		bgmPlayer.Play();
 	}
 }
