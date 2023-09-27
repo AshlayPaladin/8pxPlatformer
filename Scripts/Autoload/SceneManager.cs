@@ -10,7 +10,6 @@ public partial class SceneManager : Node
 	public override void _Ready()
 	{
 		Node2D startingScene = (Node2D)initialPackedScene.Instantiate();
-		//GetTree().Root.ContentScaleFactor = 1.0f;
 		AddChild(startingScene);
 		CurrentSceneNode = (Node2D)GetChildren()[0];
 	}

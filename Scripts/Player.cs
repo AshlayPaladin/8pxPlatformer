@@ -11,10 +11,13 @@ public partial class Player : CharacterBody2D
 	private const int SFX_ID_DBLJUMP = 1;
 	
 	// Private Members : Nodes
-	private AnimatedSprite2D _animatedSprite;
+	private AnimatedSprite2D _topAnimatedSprite;
+	private AnimatedSprite2D _bodyAnimatedSprite;
 	private Vector2 _respawnPoint;
 	private RemoteTransform2D _remoteTransform2d;
 	private AudioStreamPlayer2D _sfxPlayer;
+	private GpuParticles2D _jumpParticleNode;
+	private Timer _sporeTimer;
 	
 	// Private Members : Collections
 	private Dictionary<int,AudioStream> sfxLibrary = new Dictionary<int,AudioStream>();
@@ -25,11 +28,18 @@ public partial class Player : CharacterBody2D
 	private float DoubleJumpVelocity = -96.0f;
 	private bool DoubleJumpUnlocked = true;
 	private bool HasDoubleJumped = false;
+	private string topColor = "green";
+	private string bodyColor = "gray";
 	
 	public override void _Ready() 
 	{
-		_animatedSprite = GetNode<AnimatedSprite2D>("Player_AnimatedSprite2D");
-		_animatedSprite.Play("redtop_walk");
+		_topAnimatedSprite = GetNode<AnimatedSprite2D>("Player_Top_AnimatedSprite2D");
+		_bodyAnimatedSprite = GetNode<AnimatedSprite2D>("Player_Body_AnimatedSprite2D");
+		_topAnimatedSprite.Play($"top_{topColor}_idle");
+		_bodyAnimatedSprite.Play($"body_{bodyColor}_idle");
+		
+		_jumpParticleNode = GetNode<GpuParticles2D>("Player_Jump_Particles");
+		_sporeTimer = GetNode<Timer>("SporeTimer");
 		
 		_remoteTransform2d = GetNode<RemoteTransform2D>("Player_RemoteTransform2D");
 		
@@ -56,7 +66,15 @@ public partial class Player : CharacterBody2D
 
 		// Add the gravity.
 		if (!IsOnFloor())
+		{
 			velocity.Y += gravity * (float)delta;
+		}
+		else
+		{
+			HasDoubleJumped = false;
+			_jumpParticleNode.SetDeferred("emitting", false);
+		}
+			
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("player_jump"))
@@ -72,6 +90,9 @@ public partial class Player : CharacterBody2D
 					HasDoubleJumped = true;
 					_sfxPlayer.Stream = sfxLibrary[SFX_ID_DBLJUMP];
 					_sfxPlayer.Play();
+					
+					_jumpParticleNode.SetDeferred("emitting", true);
+					_sporeTimer.SetDeferred("WaitTime", 0.25f);
 				}
 			}
 
@@ -81,12 +102,18 @@ public partial class Player : CharacterBody2D
 		if (direction != Vector2.Zero)
 		{
 			if(velocity.X > 0) {
-				_animatedSprite.FlipH = false;
-				_animatedSprite.Play("redtop_walk");
+				_topAnimatedSprite.FlipH = false;
+				_bodyAnimatedSprite.FlipH = false;
+				
+				_topAnimatedSprite.Play($"top_{topColor}_walk");
+				_bodyAnimatedSprite.Play($"body_{bodyColor}_walk");
 			}
 			else if(velocity.X < 0){
-				_animatedSprite.FlipH = true;
-				_animatedSprite.Play("redtop_walk");
+				_topAnimatedSprite.FlipH = true;
+				_bodyAnimatedSprite.FlipH = true;
+				
+				_topAnimatedSprite.Play($"top_{topColor}_walk");
+				_bodyAnimatedSprite.Play($"body_{bodyColor}_walk");
 			}
 			
 			velocity.X = direction.X * MoveSpeed;
@@ -94,7 +121,8 @@ public partial class Player : CharacterBody2D
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, MoveSpeed);
-			_animatedSprite.Play("redtop_idle");
+			_topAnimatedSprite.Play($"top_{topColor}_idle");
+			_bodyAnimatedSprite.Play($"body_{bodyColor}_idle");
 		}
 
 		Velocity = velocity;
@@ -114,5 +142,10 @@ public partial class Player : CharacterBody2D
 	public void Respawn()
 	{
 		Position = _respawnPoint;
+	}
+	
+	private void _on_spore_timer_timeout()
+	{
+		_jumpParticleNode.SetDeferred("emitting", false);
 	}
 }
