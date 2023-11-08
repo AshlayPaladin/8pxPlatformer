@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0a22fc5idmss"]
 
 [ext_resource type="Script" path="res://Scripts/DebugStart.cs" id="1_ck5jq"]
-[ext_resource type="PackedScene" uid="uid://djwuqm21dif2r" path="res://Scenes/TitleMenu.tscn" id="2_73fuh"]
+[ext_resource type="PackedScene" uid="uid://djwuqm21dif2r" path="res://Scenes/Controls/TitleMenu.tscn" id="2_73fuh"]
 
 [node name="DebugStart" type="Node2D"]
 script = ExtResource("1_ck5jq")
