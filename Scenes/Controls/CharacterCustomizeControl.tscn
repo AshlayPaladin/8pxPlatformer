@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhsp82kdc8m8f"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterCustomizeControl.cs" id="1_pk5sl"]
+[ext_resource type="Texture2D" uid="uid://ckrhgct88c138" path="res://content/Textures/sprites/RightSelectionArrow.png" id="2_ndhd2"]
+[ext_resource type="Texture2D" uid="uid://b84krndd5hcxg" path="res://content/Textures/sprites/LeftSelectionArrow.png" id="3_sl5f0"]
+[ext_resource type="Texture2D" uid="uid://caaryi6ykkbfl" path="res://content/Textures/sprites/Head_Red.png" id="4_kai3n"]
+[ext_resource type="Texture2D" uid="uid://doaio6kvdagck" path="res://content/Textures/sprites/Body_White.png" id="5_ofprn"]
+
+[node name="CharacterCustomizeControl" type="Control"]
+layout_mode = 3
+anchor_right = 0.2
+anchor_bottom = 0.133
+offset_bottom = 0.16
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pk5sl")
+
+[node name="NextHeadButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 24.0
+icon = ExtResource("2_ndhd2")
+
+[node name="NextBodyButton" type="Button" parent="."]
+offset_left = 96.0
+offset_top = 40.0
+offset_right = 112.0
+offset_bottom = 56.0
+icon = ExtResource("2_ndhd2")
+
+[node name="PreviousHeadButton" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 24.0
+icon = ExtResource("3_sl5f0")
+
+[node name="PreviousBodyButton" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 32.0
+offset_bottom = 56.0
+icon = ExtResource("3_sl5f0")
+
+[node name="HeadTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 56.0
+texture = ExtResource("4_kai3n")
+expand_mode = 1
+
+[node name="BodyTextureRect" type="TextureRect" parent="."]
+offset_left = 40.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 56.0
+texture = ExtResource("5_ofprn")
+expand_mode = 1
+
+[connection signal="pressed" from="NextHeadButton" to="." method="_on_next_head_button_pressed"]
+[connection signal="pressed" from="NextBodyButton" to="." method="_on_next_body_button_pressed"]
+[connection signal="pressed" from="PreviousHeadButton" to="." method="_on_previous_head_button_pressed"]
+[connection signal="pressed" from="PreviousBodyButton" to="." method="_on_previous_body_button_pressed"]

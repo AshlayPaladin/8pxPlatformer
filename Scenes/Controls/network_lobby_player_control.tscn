@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://2n8nat5l3vnu"]
+
+[ext_resource type="Script" path="res://Scripts/NetworkLobbyPlayerControl.cs" id="1_6hrs8"]
+[ext_resource type="PackedScene" uid="uid://bhsp82kdc8m8f" path="res://Scenes/Controls/CharacterCustomizeControl.tscn" id="1_i8tf0"]
+
+[node name="NetworkLobbyPlayerControl" type="Control"]
+layout_mode = 3
+anchor_right = 0.7
+anchor_bottom = 0.133
+offset_right = -3.05176e-05
+offset_bottom = 0.16
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6hrs8")
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = -201.0
+offset_bottom = -16.0
+text = "_PLAYERNAME_"
+vertical_alignment = 1
+
+[node name="PlayerHeadTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.857
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = -295.936
+offset_bottom = -8.0
+
+[node name="PlayerBodyTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.857
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 8.0
+offset_right = -295.936
+offset_bottom = -8.0
+
+[node name="CharacterCustomizeControl" parent="." instance=ExtResource("1_i8tf0")]
+layout_mode = 1
+anchor_right = 0.286
+anchor_bottom = 1.0
+offset_right = -0.128006
+offset_bottom = 0.0
+
+[connection signal="OnTextureChanged" from="CharacterCustomizeControl" to="." method="_on_character_customize_control_on_texture_changed"]
